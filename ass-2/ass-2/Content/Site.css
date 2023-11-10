@@ -1,0 +1,84 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/* Site.css */
+/* Sticky header style */
+header.sticky-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Search bar enhancements */
+.search-bar input[type="text"] {
+    border: 2px solid #007bff;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.search-bar .btn-outline-secondary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+    .search-bar .btn-outline-secondary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+/* Card style for products */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    transition: all 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+/* Testimonials carousel style */
+.testimonials .carousel-item {
+    text-align: center;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Social media icons in footer */
+.footer .social-icons {
+    margin-top: 1rem;
+}
+
+    .footer .social-icons a {
+        color: #fff;
+        margin: 0 0.5rem;
+    }
+
+        .footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .search-bar input[type="text"] {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

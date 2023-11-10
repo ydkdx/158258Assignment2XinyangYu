@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IEnumerable<ass_2.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple computer store website">
+    <meta name="keywords" content="computers, buy computers, laptops, desktops">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Welcome to Our Computer Store</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Computer Store</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <!-- Search Bar -->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search products..." name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <h2 class="mb-3">Featured Products</h2>
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <<img class="card-img-top" src="@Url.Content(product.ImageUrl)" alt="Product Image">
+                         <div class="card-body">
+                             <h5 class="card-title">@product.Name</h5>
+                             <p class="card-text">@product.Category</p>
+                            
+                             <p class="card-text">价格: $@product.Price</p>
+                         </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <!-- Promotions Section -->
+        <section class="my-5">
+            <h2 class="mb-3">Promotions</h2>
+            <!-- Promotion items here -->
+        </section>
+
+        <!-- News Section -->
+        <section class="my-5">
+            <h2 class="mb-3">News Center</h2>
+            <!-- News items here -->
+        </section>
+    </div>
+    <!-- Introduction Section -->
+    <div class="about-us section">
+        <h2>Welcome to Our Trusted Computer Store</h2>
+        <p>Discover our journey, commitment to quality, and the unique services we offer to our valued customers. Join our community of tech enthusiasts today!</p>
+    </div>
+
+    <!-- Featured Products Section -->
+    <!-- Existing Featured Products Section -->
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <h2>Customer Testimonials</h2>
+        <p>Don't just take our word for it - see what our customers have to say about our products and services.</p>
+        <!-- Testimonials go here -->
+    </section>
+
+    <!-- Promotions Section -->
+    <!-- Existing Promotions Section -->
+    <!-- Blog Section -->
+    <section class="blog section">
+        <h2>From Our Tech Blog</h2>
+        <p>Stay updated with the latest tech news, tutorials, and buying guides.</p>
+        <!-- Blog entries go here -->
+    </section>
+
+    <!-- Customer Support Section -->
+    <div class="customer-support section">
+        <h2>Need Help?</h2>
+        <p>Check out our FAQ or contact our support team for assistance.</p>
+        <!-- Support links and information -->
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>Contact us at <a href="mailto:info@computerstore.com" class="text-white">info@computerstore.com</a></p>
+        <p>&copy; 2023 Computer Store</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="~/Scripts/scripts.js"></script>
+</body>
+</html>

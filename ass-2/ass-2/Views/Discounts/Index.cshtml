@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ass_2.Models.Discount>
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    ...
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    ...
+</head>
+<body>
+    ...
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+<div class="container">
+    <h2 class="my-4">Discounts</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary">
+                <a class="nav-link text-white" href="@Url.Action("index", "Discounts")">Double 11 Special Discount</a>
+            </button>
+            <p class="my-2">
+                Enjoy the biggest discounts of the year on Double 11! Don't miss out on our amazing deals!
+            </p>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary">
+                <a class="nav-link text-white" href="@Url.Action("Edit", "Discounts")">Student Verification Discount</a>
+            </button>
+            <p class="my-2">
+                Are you a student? Verify your student status and enjoy exclusive discounts on our products!
+            </p>
+        </div>
+    </div>
+
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div>
+                            <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Name)" />
+                            <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                        </div>
+                    </td>
+                    <td>
+                        <p>@Html.DisplayNameFor(model => model.OriginalPrice): @Html.DisplayFor(modelItem => item.OriginalPrice)</p>
+                    </td>
+                    <td>
+                        <p>@Html.DisplayNameFor(model => model.CurrentPrice): @Html.DisplayFor(modelItem => item.CurrentPrice)</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

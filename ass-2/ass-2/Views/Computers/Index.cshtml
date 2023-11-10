@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ass_2.Models.computers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" type="text/css" />
+
+
+<p>
+    @using (Html.BeginForm("Index", "Computers", FormMethod.Get))
+    {
+        <text>Filter by category:</text>
+        @Html.DropDownList("categoryFilter", new SelectList(new List<string>() { "all", "computer", "laptop", "tablet" }, ViewBag.CategoryFilter), new { onchange = "this.form.submit();" })
+
+        <text>Search by name:</text>
+        @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    }
+</p>
+
+<p>
+    Sort by:
+    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm }) |
+    @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>

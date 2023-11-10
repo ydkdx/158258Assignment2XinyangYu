@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ass2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="computer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="category" Type="int" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ass2.dbo.computers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="computers">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="category" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="category" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ass2ModelStoreContainer">
+    <EntitySet Name="computer" EntityType="Self.computer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="computers" EntityType="Self.computers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [computers].[id] AS [id], 
+    [computers].[name] AS [name], 
+    [computers].[category] AS [category], 
+    [computers].[price] AS [price]
+    FROM [dbo].[computers] AS [computers]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
